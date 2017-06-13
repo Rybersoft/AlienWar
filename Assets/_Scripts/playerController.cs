@@ -2,15 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerMover : MonoBehaviour {
+[System.Serializable]
+public class Boundary
+{
+	public float xMin,xMax,zMin,zMax;
+}
 
-	// Use this for initialization
-	void Start () {
-		
+public class playerController : MonoBehaviour {
+	public Rigidbody shots;
+	public Transform shotLocation;//For location where the shots will be fired//
+	public Transform shotRotation;//To get zero rotation we will use background to get quternion value for rotation//
+	public Rigidbody shipBody;
+	public float speed;
+	public float tiltSide,tiltFront;
+	public float fireRate;
+	private float nextFire;
+	public Boundary boundary;
+
+	void FixedUpdate()
+	{
+		float moveHorizontal = Input.GetAxis ("Horizontal");
+		float moveVertical = Input.GetAxis ("Vertical");
+
+		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+		shipBody.velocity = movement * speed;
+		//To Clamp the ship in playfield starts//
+		shipBody.position = new Vector3
+			(
+				Mathf.Clamp(shipBody.position.x, boundary.xMin,boundary.xMax),
+				0.0f,
+				Mathf.Clamp(shipBody.position.z, boundary.zMin,boundary.zMax)
+			);//To Clamp the ship in playfield ends//
+		shipBody.rotation = Quaternion.Euler (shipBody.velocity.z * tiltFront,0.0f, (shipBody.velocity.x * (-tiltSide)));
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	void Update()
+	{
+		if (Input.GetButton ("Fire1") && Time.time > nextFire) {
+			nextFire = Time.time + fireRate;
+			Instantiate (shots, shotLocation.position, shotRotation.rotation);
+		}
 	}
 }

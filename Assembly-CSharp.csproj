@@ -47,7 +47,14 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+     <Compile Include="Assets\_Scripts\Mover.cs" />
+     <Compile Include="Assets\_Scripts\backgroundMover.cs" />
+     <Compile Include="Assets\_Scripts\destroyByBoundary.cs" />
+     <Compile Include="Assets\_Scripts\destroyByContact.cs" />
+     <Compile Include="Assets\_Scripts\destroyByTime.cs" />
+     <Compile Include="Assets\_Scripts\gameController.cs" />
      <Compile Include="Assets\_Scripts\playerController.cs" />
+     <Compile Include="Assets\_Scripts\randomRotator.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
