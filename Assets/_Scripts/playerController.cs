@@ -24,7 +24,7 @@ public class playerController : MonoBehaviour {
 	{
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
-		Vector3 movementTouch = new Vector3 (CnInputManager.GetAxis("Horizontal"),CnInputManager.GetAxis("Vertical"),0f);
+		Vector3 movementTouch = new Vector3 (CnInputManager.GetAxis("Horizontal"),0f,CnInputManager.GetAxis("Vertical"));
 		//  Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 		// shipBody.velocity = movement * speed;				//To use for Keyboard only
 		shipBody.velocity=movementTouch*speed;

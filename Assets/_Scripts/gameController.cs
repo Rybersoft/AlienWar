@@ -9,6 +9,7 @@ public class gameController : MonoBehaviour {
 	public GameObject[] hazards;
 	public Vector3 spawnValues;
 	public int hazardCount;
+	public int level;
 	public float startWait;
 	public float spawnWait;
 
@@ -16,6 +17,7 @@ public class gameController : MonoBehaviour {
 	public Text scoreText;
 	public Text restartText;
 	public Text gameOverText;
+	public Text levelText;
 	//Text Systems//
 
 	public bool gameover = false, restart = false;
@@ -25,6 +27,7 @@ public class gameController : MonoBehaviour {
 		gameOverText.text = "";
 		restartText.text = "";
 		score = 0;
+		level = 1;
 		UpdateScore ();
 		StartCoroutine(SpawnWaves ());
 	}
@@ -42,6 +45,7 @@ public class gameController : MonoBehaviour {
 	{
 		yield return new WaitForSeconds (startWait); 
 		while (true) {
+			
 			for (int i = 0; i < hazardCount; ++i) {
 
 				GameObject hazard=hazards[Random.Range(0,hazards.Length)];
@@ -59,6 +63,8 @@ public class gameController : MonoBehaviour {
 				restart = true;
 				break;
 			}
+			StartCoroutine(levelUp ());
+			hazardCount += 20;
 		}
 	}
 	public void UpdateScore()
@@ -75,5 +81,15 @@ public class gameController : MonoBehaviour {
 	{
 		gameOverText.text = "Game Over!";
 		gameover=true;	
+	}
+	IEnumerator levelUp(){
+		level++;
+		levelText.text = "Level:"+level;
+		gameOverText.text = "Level Up!";							//We will use the gameovertextbox to display the level up notification.
+		yield return new WaitForSeconds (spawnWait);
+		gameOverText.text = "";
+		spawnWait = spawnWait - spawnWait * 0.15f;
+
+
 	}
 }
