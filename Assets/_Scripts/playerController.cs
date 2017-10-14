@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CnControls;
 
 [System.Serializable]
 public class Boundary
@@ -23,9 +24,11 @@ public class playerController : MonoBehaviour {
 	{
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
+		Vector3 movementTouch = new Vector3 (CnInputManager.GetAxis("Horizontal"),CnInputManager.GetAxis("Vertical"),0f);
+		//  Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+		// shipBody.velocity = movement * speed;				//To use for Keyboard only
+		shipBody.velocity=movementTouch*speed;
 
-		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-		shipBody.velocity = movement * speed;
 		//To Clamp the ship in playfield starts//
 		shipBody.position = new Vector3
 			(
