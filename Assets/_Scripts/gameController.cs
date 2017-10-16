@@ -7,14 +7,17 @@ public class gameController : MonoBehaviour {
 
 	int score;
 	public GameObject[] hazards;
+	public GameObject playerShip;
 	public Vector3 spawnValues;
 	public int hazardCount;
 	public int level;
+	public int lifeCount;
 	public float startWait;
 	public float spawnWait;
 
 	//Text Systems//
 	public Text scoreText;
+	public Text lifeText;
 	public Text restartText;
 	public Text gameOverText;
 	public Text levelText;
@@ -27,9 +30,12 @@ public class gameController : MonoBehaviour {
 		gameOverText.text = "";
 		restartText.text = "";
 		score = 0;
+		lifeCount = 2;
 		level = 1;
 		UpdateScore ();
+		lifeText.text = "Life:" + lifeCount;
 		StartCoroutine(SpawnWaves ());
+
 	}
 
 	void Update()
@@ -78,7 +84,7 @@ public class gameController : MonoBehaviour {
 		UpdateScore ();
 	}
 	public void GameOver()
-	{
+	{	
 		gameOverText.text = "Game Over!";
 		gameover=true;	
 	}
@@ -91,5 +97,15 @@ public class gameController : MonoBehaviour {
 		spawnWait = spawnWait - spawnWait * 0.15f;
 
 
+	}
+	public void lifeDown(){
+		if (lifeCount > 0) {
+			lifeCount--;
+			Instantiate (playerShip, transform.position, transform.rotation);
+			lifeText.text = "Life:" + lifeCount;
+		}
+		if (lifeCount == 0)
+			GameOver ();
+	
 	}
 }

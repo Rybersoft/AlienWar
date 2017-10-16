@@ -20,6 +20,8 @@ public class playerController : MonoBehaviour {
 	private float nextFire;
 	public Boundary boundary;
 
+
+
 	void FixedUpdate()
 	{
 		float moveHorizontal = Input.GetAxis ("Horizontal");
