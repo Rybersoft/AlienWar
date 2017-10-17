@@ -34,6 +34,7 @@ public class gameController : MonoBehaviour {
 		level = 1;
 		UpdateScore ();
 		lifeText.text = "Life:" + lifeCount;
+		levelText.text = "Level: " + level;
 		StartCoroutine(SpawnWaves ());
 
 	}
@@ -98,13 +99,21 @@ public class gameController : MonoBehaviour {
 
 
 	}
+
+
+	public void lifeUp(){
+		lifeCount++;
+		lifeText.text = "Life:" + lifeCount;
+	}
+
+
 	public void lifeDown(){
 		if (lifeCount > 0) {
 			lifeCount--;
 			Instantiate (playerShip, transform.position, transform.rotation);
 			lifeText.text = "Life:" + lifeCount;
 		}
-		if (lifeCount == 0)
+		else
 			GameOver ();
 	
 	}

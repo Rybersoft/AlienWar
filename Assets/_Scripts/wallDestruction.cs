@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class wallDestruction : MonoBehaviour {
-	public int wallHealth=2;
+	public int wallHealth=5;
 	private gameController Control11;
 	public int scoreIncrement;
 

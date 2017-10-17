@@ -57,6 +57,7 @@
      <Compile Include="Assets\_Scripts\destroyByTime.cs" />
      <Compile Include="Assets\_Scripts\gameController.cs" />
      <Compile Include="Assets\_Scripts\Mover.cs" />
+     <Compile Include="Assets\_Scripts\pickUp.cs" />
      <Compile Include="Assets\_Scripts\playerController.cs" />
      <Compile Include="Assets\_Scripts\randomRotator.cs" />
      <Compile Include="Assets\_Scripts\wallDestruction.cs" />

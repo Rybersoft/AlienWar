@@ -12,7 +12,7 @@ public class Boundary
 public class playerController : MonoBehaviour {
 	public Rigidbody shots;
 	public Transform shotLocation;//For location where the shots will be fired//
-	public Transform shotRotation;//To get zero rotation we will use background to get quternion value for rotation//
+	private Transform shotRotation;//To get zero rotation we will use background to get quternion value for rotation//
 	public Rigidbody shipBody;
 	public float speed;
 	public float tiltSide,tiltFront;
@@ -21,11 +21,22 @@ public class playerController : MonoBehaviour {
 	public Boundary boundary;
 
 
+	void Start()
+	{
+		GameObject gameControllerObject= GameObject.FindWithTag("sample");
+		if (gameControllerObject != null) 
+		{
+			shotRotation = gameControllerObject.GetComponent<Transform>();
+		}
+		if(gameControllerObject==null)
+			Debug.Log("Can't Find 'GameControl' Script");
+	}
+
 
 	void FixedUpdate()
 	{
-		float moveHorizontal = Input.GetAxis ("Horizontal");
-		float moveVertical = Input.GetAxis ("Vertical");
+		// float moveHorizontal = Input.GetAxis ("Horizontal");
+		// float moveVertical = Input.GetAxis ("Vertical");
 		Vector3 movementTouch = new Vector3 (CnInputManager.GetAxis("Horizontal"),0f,CnInputManager.GetAxis("Vertical"));
 		//  Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 		// shipBody.velocity = movement * speed;				//To use for Keyboard only

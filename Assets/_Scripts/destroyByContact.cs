@@ -7,7 +7,7 @@ public class destroyByContact : MonoBehaviour {
 	public GameObject asteroidExplosionVFX,playerExplosionVFX;
 	private gameController Control11;
 	public int scoreIncrement;
-
+	public GameObject[] pickUps;
 	private GameObject sample;
 
 	void Start()
@@ -25,7 +25,7 @@ public class destroyByContact : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if ((other.tag == "Boundary")||(other.tag=="enemy")) {
+		if ((other.tag == "Boundary")||(other.tag=="enemy")||(other.tag=="pickUp")) {
 			return;
 		} else {
 			Instantiate (asteroidExplosionVFX, transform.position, transform.rotation);
@@ -37,6 +37,8 @@ public class destroyByContact : MonoBehaviour {
 			Control11.addScore (scoreIncrement);
 			Destroy (other.gameObject);
 			Destroy (gameObject);
+			int i = Random.Range (0,pickUps.Length);
+			Instantiate (pickUps [i], transform.position, Quaternion.identity);
 			}
 	}
 
