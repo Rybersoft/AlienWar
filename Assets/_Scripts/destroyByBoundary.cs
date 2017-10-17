@@ -6,6 +6,9 @@ public class destroyByBoundary : MonoBehaviour {
 
 	void OnTriggerExit(Collider other)
 	{
+		if (other.tag=="Player")
+			return;
+		else
 		Destroy (other.gameObject);
 	}
 }

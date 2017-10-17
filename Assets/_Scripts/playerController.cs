@@ -10,7 +10,7 @@ public class Boundary
 }
 
 public class playerController : MonoBehaviour {
-	public Rigidbody shots;
+	public Rigidbody[] shots;
 	public Transform shotLocation;//For location where the shots will be fired//
 	private Transform shotRotation;//To get zero rotation we will use background to get quternion value for rotation//
 	public Rigidbody shipBody;
@@ -19,10 +19,11 @@ public class playerController : MonoBehaviour {
 	public float fireRate;
 	private float nextFire;
 	public Boundary boundary;
-
+	int i;
 
 	void Start()
-	{
+	{	
+		i = 0;
 		GameObject gameControllerObject= GameObject.FindWithTag("sample");
 		if (gameControllerObject != null) 
 		{
@@ -55,7 +56,13 @@ public class playerController : MonoBehaviour {
 	{
 		if (Input.GetButton ("Fire1") && Time.time > nextFire) {
 			nextFire = Time.time + fireRate;
-			Instantiate (shots, shotLocation.position, shotRotation.rotation);
+			Instantiate (shots[i], shotLocation.position, shotRotation.rotation);
 		}
 	}
+
+
+	public void powerShot(){
+		i = 1;
+	}
+
 }

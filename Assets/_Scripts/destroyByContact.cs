@@ -10,6 +10,7 @@ public class destroyByContact : MonoBehaviour {
 	public GameObject[] pickUps;
 	private GameObject sample;
 
+
 	void Start()
 	{
 		GameObject gameControllerObject= GameObject.FindWithTag("GameController");
@@ -19,13 +20,14 @@ public class destroyByContact : MonoBehaviour {
 		}
 		if(gameControllerObject==null)
 			Debug.Log("Can't Find 'GameControl' Script");
+
 	}
 
 
 
 	void OnTriggerEnter(Collider other)
 	{
-		if ((other.tag == "Boundary")||(other.tag=="enemy")||(other.tag=="pickUp")) {
+		if ((other.tag == "Boundary")||(other.tag=="enemy")||(other.tag=="pickUp")||(other.tag=="powerShotPickup")||(other.tag=="powerFire")) {
 			return;
 		} else {
 			Instantiate (asteroidExplosionVFX, transform.position, transform.rotation);
@@ -38,8 +40,15 @@ public class destroyByContact : MonoBehaviour {
 			Destroy (other.gameObject);
 			Destroy (gameObject);
 			int i = Random.Range (0,pickUps.Length);
-			Instantiate (pickUps [i], transform.position, Quaternion.identity);
-			}
+			int randNo = Random.Range (0, 10*pickUps.Length);
+			if (i == randNo)
+				SpawnPickUp (i);
+		}
+	}
+
+
+	public void SpawnPickUp(int a){
+		Instantiate (pickUps [a], transform.position, Quaternion.identity);
 	}
 
 }
