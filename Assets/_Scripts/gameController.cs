@@ -44,7 +44,7 @@ public class gameController : MonoBehaviour {
 	void Update()
 	{
 		if (restart) {
-			if (Input.GetKeyDown (KeyCode.R)) {
+			if (Input.GetButton ("Fire1")) {
 				Application.LoadLevel (Application.loadedLevel);
 			}
 		}
@@ -71,7 +71,7 @@ public class gameController : MonoBehaviour {
 			}
 			yield return new WaitForSeconds (spawnWait);
 			if (gameover) {
-				restartText.text = "Press 'R' To Restart";
+				restartText.text = "Tap To >> Retry";
 				restart = true;
 				break;
 			}
