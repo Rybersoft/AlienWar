@@ -28,6 +28,9 @@ public class destroyByContact : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		if ((other.tag == "Boundary")||(other.tag=="enemy")||(other.tag=="pickUp")||(other.tag=="powerShotPickup")||(other.tag=="powerFire")) {
+			if (other.tag=="powerFire")
+				Instantiate (asteroidExplosionVFX, transform.position, transform.rotation);
+			else
 			return;
 		} else {
 			Instantiate (asteroidExplosionVFX, transform.position, transform.rotation);

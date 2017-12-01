@@ -10,6 +10,8 @@ public class Boundary
 }
 
 public class playerController : MonoBehaviour {
+	private Camera externalCam;
+	public Camera childCam;
 	public Rigidbody[] shots;
 	public Transform shotLocation;//For location where the shots will be fired//
 	private Transform shotRotation;//To get zero rotation we will use background to get quternion value for rotation//
@@ -23,6 +25,7 @@ public class playerController : MonoBehaviour {
 
 	void Start()
 	{	
+		checkCamOnStart (); 					
 		i = 0;
 		GameObject gameControllerObject= GameObject.FindWithTag("sample");
 		if (gameControllerObject != null) 
@@ -40,7 +43,7 @@ public class playerController : MonoBehaviour {
 		// float moveVertical = Input.GetAxis ("Vertical");
 		Vector3 movementTouch = new Vector3 (CnInputManager.GetAxis("Horizontal"),0f,CnInputManager.GetAxis("Vertical"));
 		//  Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-		// shipBody.velocity = movement * speed;				//To use for Keyboard only
+		// shipBody.velocity = movement * speed;																					//To use for Keyboard only
 		shipBody.velocity=movementTouch*speed;
 
 		//To Clamp the ship in playfield starts//
@@ -64,5 +67,18 @@ public class playerController : MonoBehaviour {
 	public void powerShot(){
 		i = 1;
 	}
+
+	public void checkCamOnStart(){															//It will check if the external camera is enabled or not 
+		GameObject cam=GameObject.FindGameObjectWithTag("MainCamera");
+		if (!cam == null)
+			externalCam = cam.GetComponent<Camera>();
+		else
+			childCam.gameObject.SetActive(true);
+	}
+
+
+
+
+
 
 }

@@ -7,6 +7,7 @@ public class gameController : MonoBehaviour {
 
 	int score;
 	public GameObject[] hazards;
+	GameObject hazard;
 	public GameObject playerShip;
 	public Vector3 spawnValues;
 	public int hazardCount;
@@ -33,8 +34,9 @@ public class gameController : MonoBehaviour {
 		lifeCount = 2;
 		level = 1;
 		UpdateScore ();
-		lifeText.text = "Life:" + lifeCount;
-		levelText.text = "Level: " + level;
+		lifeText.text = ":" + lifeCount;
+		levelText.text = ": " + level;
+		Instantiate (playerShip,transform.position,transform.rotation);
 		StartCoroutine(SpawnWaves ());
 
 	}
@@ -54,8 +56,11 @@ public class gameController : MonoBehaviour {
 		while (true) {
 			
 			for (int i = 0; i < hazardCount; ++i) {
-
-				GameObject hazard=hazards[Random.Range(0,hazards.Length)];
+				if (level < hazards.Length) {														//Reveals the enemy types with level
+					hazard = hazards [Random.Range (0, (level-1))];
+				} else {
+					hazard = hazards [Random.Range (0, hazards.Length)];
+				}
 				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
 				Quaternion spawnRotation = Quaternion.identity;
 				Instantiate (hazard, spawnPosition, spawnRotation);
@@ -91,7 +96,7 @@ public class gameController : MonoBehaviour {
 	}
 	IEnumerator levelUp(){
 		level++;
-		levelText.text = "Level:"+level;
+		levelText.text = ":"+level;
 		gameOverText.text = "Level Up!";							//We will use the gameovertextbox to display the level up notification.
 		yield return new WaitForSeconds (spawnWait);
 		gameOverText.text = "";
@@ -103,7 +108,7 @@ public class gameController : MonoBehaviour {
 
 	public void lifeUp(){
 		lifeCount++;
-		lifeText.text = "Life:" + lifeCount;
+		lifeText.text = ":" + lifeCount;
 	}
 
 
@@ -111,7 +116,7 @@ public class gameController : MonoBehaviour {
 		if (lifeCount > 0) {
 			lifeCount--;
 			Instantiate (playerShip, transform.position, transform.rotation);
-			lifeText.text = "Life:" + lifeCount;
+			lifeText.text = ":" + lifeCount;
 		}
 		else
 			GameOver ();

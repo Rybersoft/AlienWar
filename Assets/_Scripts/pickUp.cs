@@ -20,7 +20,6 @@ public class pickUp : MonoBehaviour {
 			Debug.Log("Can't Find 'GameControl' Script");
 
 	
-
 		GameObject playerControllerObject= GameObject.FindWithTag("Player");
 		if (playerControllerObject != null) 
 		{
