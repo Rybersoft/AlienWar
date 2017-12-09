@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using CnControls;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Boundary
@@ -12,6 +13,7 @@ public class Boundary
 public class playerController : MonoBehaviour {
 	private Camera externalCam;
 	public Camera childCam;
+	private Slider sensitivitySlider;
 	public Rigidbody[] shots;
 	public Transform shotLocation;//For location where the shots will be fired//
 	private Transform shotRotation;//To get zero rotation we will use background to get quternion value for rotation//
@@ -34,6 +36,8 @@ public class playerController : MonoBehaviour {
 		}
 		if(gameControllerObject==null)
 			Debug.Log("Can't Find 'GameControl' Script");
+		GameObject slidertemp= GameObject.FindWithTag("sensitivitySlider");
+		sensitivitySlider = slidertemp.gameObject.GetComponent<Slider> ();
 	}
 
 
@@ -44,7 +48,7 @@ public class playerController : MonoBehaviour {
 		Vector3 movementTouch = new Vector3 (CnInputManager.GetAxis("Horizontal"),0f,CnInputManager.GetAxis("Vertical"));
 		//  Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 		// shipBody.velocity = movement * speed;																					//To use for Keyboard only
-		shipBody.velocity=movementTouch*speed;
+		shipBody.velocity=movementTouch*speed*sensitivitySlider.value;
 
 		//To Clamp the ship in playfield starts//
 		shipBody.position = new Vector3

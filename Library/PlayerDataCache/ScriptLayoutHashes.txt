@@ -120,6 +120,8 @@ fad6a1d0ffa70f43809d51965b5402b7 Assembly-CSharp-firstpass.dll:CnControls.Touchp
 cf934baaaa52e700f1f652a0846b1de8 Assembly-CSharp-firstpass.dll:Examples.Scenes.TouchpadCamera.RotateCamera
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.destroyByTime
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.destroyByBoundary
+05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
+05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 7d6fbb4c22d78e12c1b19772a43401dc Assembly-CSharp.dll:.AnimationScript
 15b5a9fe7d809655f4178bdb9bcbf4ac Assembly-CSharp-firstpass.dll:CnControls.SimpleJoystick
 7adbc5406cd34705759bd60164e44731 Assembly-CSharp.dll:.gameController
@@ -150,6 +152,7 @@ fe91fcc3ba3478b7b0383307c12ba17c Assembly-CSharp.dll:.wallDestruction
 87a085552804aab3e29628e874ba1597 Assembly-CSharp.dll:.camSwap
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 b48e8be1148f21aa834d9ff319a9caf2 Assembly-CSharp-firstpass.dll:Examples.Scenes.TouchpadCamera.RotationConstraint
+54edc96324fb9a76d90744678c27e8d6 Assembly-CSharp.dll:.buttonFunctions
 25365ec66501498d52d11616553a9368 Assembly-CSharp.dll:.Readme
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput

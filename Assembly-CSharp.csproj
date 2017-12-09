@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_Scripts\backgroundMover.cs" />
+     <Compile Include="Assets\_Scripts\buttonFunctions.cs" />
      <Compile Include="Assets\_Scripts\camSwap.cs" />
      <Compile Include="Assets\_Scripts\destroyByBoundary.cs" />
      <Compile Include="Assets\_Scripts\destroyByContact.cs" />
